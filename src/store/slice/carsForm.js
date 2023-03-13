@@ -11,18 +11,20 @@ const carsSlice = createSlice({
       state.searchTerm = action.payload;
     },
     addCar(state, action) {
-      state.cars.payload({
+      state.cars.push({
         name: action.payload.name,
         cost: action.payload.cost,
         id: nanoid(),
       });
     },
-  },
-  removeCar(state, action) {
-    //Assumption
-    //actio.payload== the id
-    const updated = state.cars.filter((car) => car.id !== action.payload);
-    state.cars = updated;
+    removeCar(state, action) {
+      //Assumption
+      //actio.payload== the id
+      const updated = state.cars.filter((car) => {
+        return car.id !== action.payload;
+      });
+      state.cars = updated;
+    },
   },
 });
 
