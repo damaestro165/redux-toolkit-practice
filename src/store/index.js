@@ -4,7 +4,7 @@ import {
   addCar,
   removeCar,
   ChangeSearchTerm,
-} from './slice/carsForm';
+} from './slice/carsSlice';
 import { formReducer, ChangeCost, ChangeName } from './slice/formSlice';
 
 const store = configureStore({
