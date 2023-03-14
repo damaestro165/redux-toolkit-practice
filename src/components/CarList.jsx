@@ -9,11 +9,21 @@ function CarList() {
     dispatch(removeCar(id));
   };
 
-  const cars = useSelector((state) => state.cars.cars);
+  //for partial match
+  const { cars, name } = useSelector(({ form, cars: { cars, searchTerm } }) => {
+    const filteredCars = cars.filter((car) =>
+      car.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    return {
+      cars: filteredCars,
+      name: form.name,
+    };
+  });
+
   return (
-    <div>
+    <div className='car-list note '>
       {cars.map((car) => (
-        <div key={car.id}>
+        <div key={car.id} className='panel'>
           <p>
             {car.name} - ${car.cost}
           </p>
