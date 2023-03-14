@@ -21,20 +21,24 @@ function CarList() {
   });
 
   return (
-    <div className='car-list note '>
-      {cars.map((car) => (
-        <div key={car.id} className='panel'>
-          <p>
-            {car.name} - ${car.cost}
-          </p>
-          <button
-            className='button is-danger'
-            onClick={() => handleCarDelete(car.id)}
-          >
-            Delete
-          </button>
-        </div>
-      ))}
+    <div className='car-list note'>
+      {cars.map((car) => {
+        const bold =
+          name && car.name.toLowerCase().includes(name.toLowerCase());
+        return (
+          <div key={car.id} className={`panel ${bold && 'bold'}`}>
+            <p>
+              {car.name} - ${car.cost}
+            </p>
+            <button
+              className='button is-danger'
+              onClick={() => handleCarDelete(car.id)}
+            >
+              Delete
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }
