@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ChangeCost, ChangeName, addCar, } from '../store';
+import { ChangeCost, ChangeName, addCar } from '../store';
 
 function CarForm() {
   const { name, cost } = useSelector((state) => {
@@ -21,7 +21,7 @@ function CarForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     dispatch(addCar({ name, cost }));
   };
 
@@ -36,6 +36,7 @@ function CarForm() {
               className='input is-expanded'
               value={name}
               onChange={handleNameChange}
+              required
             />
           </div>
 
@@ -46,6 +47,7 @@ function CarForm() {
               value={cost || ''}
               onChange={handleCostChange}
               type='number'
+              required
             />
           </div>
         </div>
